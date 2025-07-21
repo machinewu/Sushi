@@ -68,7 +68,7 @@ class DownmixedWavFile(object):
             return ''
         data = self._file.read(count * self.frame_size)
         if self.sample_width == 2:
-            unpacked = np.fromstring(data, dtype=np.int16)
+            unpacked = np.frombuffer(data, dtype=np.int16)
         elif self.sample_width == 3:
             raw_bytes = np.ndarray(len(data), 'int8', data)
             unpacked = np.zeros(len(data) / 3, np.int16)
